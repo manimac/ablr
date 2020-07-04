@@ -1,0 +1,77 @@
+<header class="header_wrap fixed-top header_with_topbar">
+    <div class="bottom_header dark_skin main_menu_uppercase">
+       <div class="container">
+          <nav class="navbar navbar-expand-lg">
+             <a class="navbar-brand" routerLink="/home">
+             <img class="logo_light" src="assets/images/logo.png" alt="logo" />
+             <img class="logo_dark" src="assets/images/logo.png" alt="logo" />
+             </a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false"> 
+             <span class="ion-android-menu"></span>
+             </button>
+             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                   <li >
+                      <a class="nav-link  nav_item  active" routerLink="/home">Home</a>
+                   </li>
+                   <li><a class="nav-link nav_item" routerLink="/impact">Impact</a></li>
+                   <li><a class="nav-link nav_item" routerLink="/product-detail">Product</a></li>
+                   <li><a class="nav-link nav_item" routerLink="/about-us">About Us</a></li>
+                   <li><a class="nav-link nav_item" routerLink="/contact">Contact</a></li>
+                </ul>
+             </div>
+             <ul class="navbar-nav ml-150 attr-nav align-items-center">
+                <li><a routerLink="/product-detail" class="order-btn hidden-xs">Order Now</a></li>
+               <!-- <li><a routerLink="/signin"><i class="rght-link ti-user"></i></a></li> -->
+      
+      <li class="dropdown cart_dropdown">
+                   <a class="rght-link1 cart_trigger" routerLink="/signin" data-toggle="dropdown">
+                      <i class="rght-link ti-user"></i>
+                    
+                   </a>
+                   <div class="cart_box dropdown-menu dropdown-menu-right">
+                   <ul class="cart_list">
+                   <li>
+                   <a routerLink="/my-order">Order History</a>
+                  
+                   </li>
+                   <li>
+               
+                   <a href="#">Logout</a>
+                 
+                   </li>
+                   </ul>
+               
+                   </div>
+                </li>
+                <li class="dropdown cart_dropdown">
+                  <a class="rght-link1 cart_trigger" href="#" data-toggle="dropdown">
+                     <i class="linearicons-bag"></i>
+                     <span class="cart_count">2</span>
+                  </a>
+                  <div class="cart_box dropdown-menu dropdown-menu-right">
+                  <ul class="cart_list">
+                  <li>
+                  <a href="#" class="item_remove"><i class="ion-close"></i></a>
+                  <a href="#"><img src="assets/images/product/1.png" alt="cart_thumb1">ABLR001</a>
+                  <span class="cart_quantity"> 1 x <span class="cart_amount"> <span class="price_symbole">$</span></span>89.99</span>
+                  </li>
+                  <li>
+                  <a href="#" class="item_remove"><i class="ion-close"></i></a>
+                  <a href="#"><img src="assets/images/product/1.png" alt="cart_thumb2">ABLR002</a>
+                  <span class="cart_quantity"> 1 x <span class="cart_amount"> <span class="price_symbole">$</span></span>89.99</span>
+                  </li>
+                  </ul>
+                  <div class="cart_footer">
+                  <p class="cart_total"><strong>Total:</strong> <span class="cart_price"> <span class="price_symbole">$</span></span>179.98</p>
+                  <p class="cart_buttons">
+            <!-- <a href="#" class="btn btn-fill-line rounded-0 view-cart">View Cart</a> -->
+            <a href="checkout.html" class="btn btn-fill-out rounded-0 checkout">Checkout</a></p>
+                  </div>
+                  </div>
+               </li>
+             </ul>
+          </nav>
+       </div>
+    </div>
+ </header>
