@@ -17,7 +17,7 @@ import { TermsConditionComponent } from '../pages/terms-condition/terms-conditio
 
 const Route: Routes = [
   {
-    path: '', redirectTo: '/home', pathMatch: 'full'
+    path: '', redirectTo: 'home', pathMatch: 'full'
   },
   {
     path: 'signin', component: LoginComponent
@@ -35,11 +35,10 @@ const Route: Routes = [
     path: 'my-order', component: OrderHistoryComponent, canActivate: [AuthGuardService]
   },
   {
-    path: 'checkout', component: CheckoutComponent
-    // , canActivate: [AuthGuardService]
+    path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService]
   },
   {
-    path: 'order-completed', component: OrderCompletedComponent
+    path: 'order-completed', component: OrderCompletedComponent, canActivate: [AuthGuardService]
   },
   {
     path: 'about-us', component: AboutUsComponent
@@ -57,7 +56,7 @@ const Route: Routes = [
     path: 'impact', component: ImpactComponent
   },
   {
-    path: '**', component: IndexComponent
+    path: '**', redirectTo: '/home'
   }
 ]
 @NgModule({

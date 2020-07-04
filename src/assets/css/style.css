@@ -1066,13 +1066,14 @@ button:focus {
 	list-style: none;
 	transition: all 0.3s ease 0s;
 	font-size:22px;
+	cursor: pointer;
 }
 .navbar-nav .dropdown-menu {
 	border: 0;
 	border-radius: 0;
 	margin: 0;
 	padding: 0;
-	min-width: 14rem;
+	min-width: 10rem;
 }
 .navbar-nav .dropdown-menu {
 	background-color: #252A2C;

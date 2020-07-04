@@ -7,13 +7,13 @@
                     <div id="pr_item_gallery" class="product_gallery_item slick_slider" data-vertical="true"
                         data-vertical-swiping="true" data-slides-to-show="5" data-slides-to-scroll="1"
                         data-infinite="false">
-                        <div class="item">
-                            <a href="#" class="product_gallery_item active" data-image="assets/images/product/1.png"
-                                data-zoom-image="assets/images/product/1.png">
-                                <img src="assets/images/product/1.png" alt="product_small_img1" />
+                        <div class="item" *ngFor="let image of currentProduct.products">
+                            <a (click)="currentImage=image" class="product_gallery_item" [ngClass]="{'active':currentImage==image}" data-image="http://localhost:8000/uploads/{{image}}"
+                                data-zoom-image="http://localhost:8000/uploads/{{image}}">
+                                <img src="http://localhost:8000/uploads/{{image}}" alt="product_small_img1" />
                             </a>
                         </div>
-                        <div class="item">
+                        <!-- <div class="item">
                             <a href="#" class="product_gallery_item" data-image="assets/images/product/2.png"
                                 data-zoom-image="assets/images/product/2.png">
                                 <img src="assets/images/product/2.png" alt="product_small_img2" />
@@ -48,12 +48,12 @@
                                 data-zoom-image="assets/images/product/1.png">
                                 <img src="assets/images/product/1.png" alt="product_small_img3" />
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="product_img_box">
-                        <img id="product_img" src='assets/images/product/1.png'
-                            data-zoom-image="assets/images/product/1.png" alt="product_img1" />
-                        <a href="#" class="product_img_zoom" title="Zoom">
+                        <img id="product_img" src='http://localhost:8000/uploads/{{currentImage}}'
+                            data-zoom-image="http://localhost:8000/uploads/{{currentImage}}" alt="product_img1" />
+                        <a class="product_img_zoom" title="Zoom">
                             <span class="linearicons-zoom-in"></span>
                         </a>
                     </div>
@@ -62,10 +62,10 @@
             <div class="col-lg-6 col-md-6">
                 <div class="pr_detail">
                     <div class="product_description">
-                        <h4 class="product_title"><a href="#">ABLR Hospital Grade Hand Sanitiser 5L</a></h4>
+                        <h4 class="product_title"><a>{{currentProduct.name}}</a></h4>
                         <h6>Minimum Order: 20 Units</h6>
                         <div class="product_price text-center">
-                            <span class="price">FROM $89.99</span>
+                            <span class="price">FROM ${{currentProduct.price}}</span>
                             <p>(Free Delivery within Australia)</p>
                         </div>
                         <div class="clearfix"></div>
@@ -79,12 +79,12 @@
                             </ul>
                             <div class="form-group">
 
-                                <select class="form-control" id="sel1">
-                                    <option>QTY</option>
-                                    <option>20</option>
-                                    <option>40</option>
-                                    <option>80</option>
-                                    <option>120</option>
+                                <select class="form-control" id="sel1" [(ngModel)]="quantity">
+                                    <option value="">QTY</option>
+                                    <option value="20">20</option>
+                                    <option value="40">40</option>
+                                    <option value="80">80</option>
+                                    <option value="120">120</option>
                                 </select>
                             </div>
                         </div>
@@ -120,12 +120,12 @@
                                                 <div class="quantity1">
                                                     <div class="form-group">
 
-                                                        <select class="form-control" id="sel1">
-                                                            <option>QTY</option>
-                                                            <option>20</option>
-                                                            <option>40</option>
-                                                            <option>80</option>
-                                                            <option>120</option>
+                                                        <select class="form-control" id="sel1" [(ngModel)]="quantity">
+                                                            <option value="">QTY</option>
+                                                            <option value="20">20</option>
+                                                            <option value="40">40</option>
+                                                            <option value="80">80</option>
+                                                            <option value="120">120</option>
                                                         </select>
                                                     </div>
 
@@ -142,98 +142,7 @@
                     <div class="cart_extra">
                         <div class="cart_btn text-center">
                             <!-- <center> -->
-                                <a routerLink="/checkout" class="btn2" type="button"> Add to cart</a>
-                            <!-- </center> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row" style="display:none;">
-            <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
-                <div class="product-image vertical_gallery">
-                    <div id="pr_item_gallery" class="product_gallery_item slick_slider" data-vertical="true"
-                        data-vertical-swiping="true" data-slides-to-show="5" data-slides-to-scroll="1"
-                        data-infinite="false">
-                        <div class="item">
-                            <a href="#" class="product_gallery_item active" data-image="assets/images/product/1.png"
-                                data-zoom-image="assets/images/product/1.png">
-                                <img src="assets/images/product/1.png" alt="" title="" />
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#" class="product_gallery_item" data-image="assets/images/product/2.png"
-                                data-zoom-image="assets/images/product/2.png">
-                                <img src="assets/images/product/2.png" alt="" title="" />
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#" class="product_gallery_item" data-image="assets/images/product/1.png"
-                                data-zoom-image="assets/images/product/1.png">
-                                <img src="assets/images/product/1.png" alt="" title="" />
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#" class="product_gallery_item" data-image="assets/images/product/2.png"
-                                data-zoom-image="assets/images/product/2.png">
-                                <img src="assets/images/product/2.png" alt="" title="" />
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#" class="product_gallery_item" data-image="assets/images/product/1.png"
-                                data-zoom-image="assets/images/product/1.png">
-                                <img src="assets/images/product/1.png" alt="" title="" />
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#" class="product_gallery_item" data-image="assets/images/product/2.png"
-                                data-zoom-image="assets/images/product/2.png">
-                                <img src="assets/images/product/2.png" alt="" title="" />
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#" class="product_gallery_item" data-image="assets/images/product/1.png"
-                                data-zoom-image="assets/images/product/1.png">
-                                <img src="assets/images/product/1.png" alt="" title="" />
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product_img_box">
-                        <img id="product_img" src='assets/images/product/1.png'
-                            data-zoom-image="assets/images/product/1.png" alt="" title="" />
-                        <a href="#" class="product_img_zoom" title="Zoom">
-                            <span class="linearicons-zoom-in"></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="pr_detail">
-                    <div class="product_description">
-                        <h4 class="product_title"><a href="#">ABLR Hospital Grade Hand Sanitiser 5L</a></h4>
-                        <h6>Minimum Order: 1/2 Pallet (80 Units)</h6>
-                        <div class="product_price text-center">
-                            <span class="price">$ 89.99</span>
-                            <p>(Free Delivery)</p>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="product_sort_info">
-                            <ul>
-                                <li>W.H.O Recommended Formula</li>
-                                <li> Hospital Grade</li>
-                                <li>80% Alcohol </li>
-                                <li>FragranceFree </li>
-                                <li>Natural </li>
-                            </ul>
-
-
-                        </div>
-                    </div>
-                    <div class="cart_extra">
-                        <div class="cart_btn text-center">
-                            <!-- <center> -->
-                                <a routerLink="/checkout" class=" btn2 " type="button"> Add to cart</a>
+                            <a class="btn2" type="button" (click)="buynow()"> Add to cart</a>
                             <!-- </center> -->
                         </div>
                     </div>
