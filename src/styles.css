@@ -11,3 +11,6 @@ a{
     background: #b29860 !important;
     color: #000 !important;
 }
+.checkout-product img{
+    width: 50% !important;
+}

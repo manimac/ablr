@@ -8,9 +8,8 @@
                         data-vertical-swiping="true" data-slides-to-show="5" data-slides-to-scroll="1"
                         data-infinite="false">
                         <div class="item" *ngFor="let image of currentProduct.products">
-                            <a (click)="currentImage=image" class="product_gallery_item" [ngClass]="{'active':currentImage==image}" data-image="http://localhost:8000/uploads/{{image}}"
-                                data-zoom-image="http://localhost:8000/uploads/{{image}}">
-                                <img src="http://localhost:8000/uploads/{{image}}" alt="product_small_img1" />
+                            <a (click)="currentImage=image" class="product_gallery_item" [ngClass]="{'active':currentImage==image}" *ngIf="image&&currentImage">
+                                <img [src]="getImage(image)" alt="product_small_img1" />
                             </a>
                         </div>
                         <!-- <div class="item">
@@ -51,8 +50,7 @@
                         </div> -->
                     </div>
                     <div class="product_img_box">
-                        <img id="product_img" src='http://localhost:8000/uploads/{{currentImage}}'
-                            data-zoom-image="http://localhost:8000/uploads/{{currentImage}}" alt="product_img1" />
+                        <img id="product_img" [src]='getImage(currentImage)' alt="product_img1" />
                         <a class="product_img_zoom" title="Zoom">
                             <span class="linearicons-zoom-in"></span>
                         </a>
@@ -74,7 +72,7 @@
                                 <li>W.H.O Recommended Formula</li>
                                 <li> Hospital Grade</li>
                                 <li>80% Alcohol </li>
-                                <li>FragranceFree </li>
+                                <li>Fragrance Free </li>
                                 <li>Natural </li>
                             </ul>
                             <div class="form-group">

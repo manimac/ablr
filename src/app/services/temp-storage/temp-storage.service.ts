@@ -30,7 +30,16 @@ export class TempStorageService {
   setProductStorage(params){
     let product = this.getProductStorage();
     if(product){
-      params.quantity = product.quantity + params.quantity;
+      // params.quantity = product.quantity + params.quantity;
+      params.quantity = params.quantity;
+    }
+    this.storageService.secureStorage.setItem('products', JSON.stringify(params));
+  }
+
+  setCheckoutProductStorage(params){
+    let product = this.getProductStorage();
+    if(product){
+      params.quantity = params.quantity;
     }
     this.storageService.secureStorage.setItem('products', JSON.stringify(params));
   }

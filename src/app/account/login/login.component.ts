@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       this.toast.error("Please enter the password");
     }
     else {
-      this.http.post('login', this.loginForm.value).subscribe(
+      this.http.post('/login', this.loginForm.value).subscribe(
         (response: any) => {
           if (response && response.success) {
             this.storage.setStorage(response.success);

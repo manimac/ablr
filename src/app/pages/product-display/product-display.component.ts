@@ -14,7 +14,7 @@ export class ProductDisplayComponent implements OnInit {
 
   currentProduct: any = {};
   quantity: any = '';
-  currentImage: any;
+  currentImage: any = null;
 
   constructor(public router: Router, private http: HttpRequestService, private toast: ToastrService, private storage: TempStorageService, private communication: CommunicationService) {
     this.loadProducts();
@@ -42,6 +42,10 @@ export class ProductDisplayComponent implements OnInit {
     )
   }
 
+  getImage(image){
+    return 'http://ablr.com.au/uploads/' + image;
+  }
+
   buynow() {
     if (!this.quantity) {
       this.toast.error("Please select the quantity");
@@ -53,7 +57,8 @@ export class ProductDisplayComponent implements OnInit {
     }
     this.storage.setProductStorage(params);
     this.communication.updateProduct.emit();
-    this.router.navigate(['/checkout']);
+    this.toast.success("Product has been added to your cart");
+    // this.router.navigate(['/checkout']);
     // if(this.storage.getStorage()){
     //   let user = this.storage.getStorage();
     //   let params = {

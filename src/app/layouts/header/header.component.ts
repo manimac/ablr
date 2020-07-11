@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
   }
 
   total() {
-    return (this.productDetail.quantity * this.productDetail.product.price);
+    return (this.productDetail.quantity * this.productDetail.product.price).toFixed(2);
   }
 
   removeItem() {

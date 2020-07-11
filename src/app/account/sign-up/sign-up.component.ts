@@ -70,7 +70,7 @@ export class SignUpComponent implements OnInit {
       this.toast.error("Please enter the zip / postal code");
     }
     else {
-      this.http.post('register', this.registerForm.value).subscribe(
+      this.http.post('/register', this.registerForm.value).subscribe(
         (response: any) => {
           if (response && response.success) {
             this.storage.setStorage(response.success);

@@ -23,7 +23,8 @@ import { LoginComponent } from './account/login/login.component';
 import { SignUpComponent } from './account/sign-up/sign-up.component';
 import { ProductDisplayComponent } from './pages/product-display/product-display.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgxPayPalModule } from 'ngx-paypal';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,9 +52,10 @@ import { HttpClientModule } from '@angular/common/http';
     ToastrModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPayPalModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

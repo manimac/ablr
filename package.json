@@ -23,6 +23,7 @@
     "angular-datatables": "^6.0.0",
     "crypto-js": "^4.0.0",
     "jquery": "^3.5.1",
+    "ngx-paypal": "^6.1.0",
     "ngx-toastr": "^12.1.0",
     "rxjs": "~6.5.4",
     "secure-web-storage": "^1.0.2",

@@ -1,5 +1,5 @@
 <!-- START SECTION BREADCRUMB -->
-<div class="breadcrumb_section bg-dark page-title-mini">
+<div class="breadcrumb_section bg-dark page-title-mini" *ngIf="!ShowOrderCompleted">
    <div class="container">
       <!-- STRART CONTAINER -->
       <div class="row align-items-center">
@@ -14,7 +14,7 @@
 </div>
 <!-- END SECTION BREADCRUMB -->
 <!-- START MAIN CONTENT -->
-<div class="main_content">
+<div class="main_content" *ngIf="!ShowOrderCompleted">
    <!-- STAT SECTION ABOUT --> 
    <div class="section">
       <div class="container">
@@ -35,7 +35,7 @@
                               {{address.zipcode}}
                            </address>
                            <div class="address-box-action clearfix">
-                              <a (click)="shipping(address.id)" class="btn btn-sm btn-outline-secondary cursor-pointer shipment-btn" [ngClass]="{'bg-selected':address.id==shipmentId}">
+                              <a (click)="shipping(address.id)" class="btn btn-sm btn-outline-secondary cursor-pointer shipment-btn" [ngClass]="{'bg-selected':address.id==shipmentId}" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                   Ship Here
                               </a>
                           </div>
@@ -57,29 +57,36 @@
                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                   <div class="card-body">
                      <div class="row" *ngIf="currentProduct&&currentProduct.product">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 checkout-product">
                            <img src="assets/images/product/1.png" alt="" title="" class="img-responsive"/>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                            <h4>{{currentProduct.product.name}}</h4>
                            <div class="cart-product-quantity">
                               <div class="quantity">
-                                 <input type="button" value="-" class="minus">
-                                 <input type="text" [(ngModel)]="currentProduct.quantity" value="1" title="Qty" class="qty" size="4" (change)="updateQuantity()">
-                                 <input type="button" value="+" class="plus">
+                                 <select class="form-control" id="sel1" [(ngModel)]="currentProduct.quantity"  (change)="updateQuantity()">
+                                    <option value="">QTY</option>
+                                    <option value="20">20</option>
+                                    <option value="40">40</option>
+                                    <option value="80">80</option>
+                                    <option value="120">120</option>
+                                </select>
+                                 <!-- <input type="text" [(ngModel)]="currentProduct.quantity" value="1" title="Qty" class="qty" size="4" (change)="updateQuantity()"> -->
                               </div>
                            </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                            <ul class="widget_categories">
                               <li><a><span class="categories_name">Total</span><span class="categories_num"> - {{currentProduct.product.price}}</span></a></li>
-                              <!-- <li><a href="#"><span class="categories_name">GST</span><span class="categories_num">- 20</span></a></li> -->
+                              <li><a><span class="categories_name">Shipping</span><span class="categories_num">- Free</span></a></li>
+                              <li><a><span class="categories_name">GST</span><span class="categories_num">- 10%</span></a></li>
                               <li><a><span class="categories_name">Total</span>-<span class="categories_num" [innerHtml]="total()"></span></a></li>
                            </ul>
                         </div>
                      </div>
                      <div class="text-right">
-                        <a href="" class="order-btn">Pay Now</a>
+                        <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                        <!-- <a (click)="paynow()" class="order-btn">Pay Now</a> -->
                      </div>
                   </div>
                </div>
@@ -89,6 +96,94 @@
    </div>
    <!-- END SECTION ABOUT --> 
 </div>
+
+
+<!-- START SECTION BREADCRUMB -->
+<div class="breadcrumb_section bg-dark page-title-mini" *ngIf="ShowOrderCompleted">
+   <div class="container">
+     <!-- STRART CONTAINER -->
+     <div class="row align-items-center">
+       <div class="col-md-12">
+         <div class="page-title text-center">
+           <h1 class="text-center">Order Completed</h1>
+         </div>
+       </div>
+     </div>
+   </div>
+   <!-- END CONTAINER-->
+ </div>
+ <!-- END SECTION BREADCRUMB -->
+ <!-- START MAIN CONTENT -->
+ <div class="main_content" *ngIf="ShowOrderCompleted">
+   <!-- STAT SECTION ABOUT -->
+   <div class="section">
+     <div class="container">
+       <div class="order-completed">
+         <div class="order-completedinner">
+           <div class="row">
+             <div class="col-lg-5 col-md-5 col-sm-5 col-12">
+               <img src="assets/images/product/1.png" alt="" title="" class="img-responsive" />
+ 
+             </div>
+             <div class="col-lg-7 col-md-7 col-sm-7 col-12">
+ 
+ 
+               <div class="table-responsive">
+                 <table class="table table-bordered">
+                   <thead>
+                     <tr>
+                       <th colspan="2">Order Completed</th>
+ 
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                       <td>Product Name</td>
+                       <td>{{currentProduct.product.name}}</td>
+ 
+                     </tr>
+                     <tr>
+                       <td>Date</td>
+                       <td>{{orderedDate|date:'medium'}}</td>
+ 
+                     </tr>
+                     <tr>
+                       <td>Quantity</td>
+                       <td>{{currentProduct.quantity}}</td>
+ 
+                     </tr>
+                     <tr>
+                       <td>Address</td>
+                       <td>{{paidAddress.address1}},<br/>
+                        {{paidAddress.address2}}, <br/>
+                        {{paidAddress.city}},<br/>
+                        {{paidAddress.zipcode}}</td>
+ 
+                     </tr>
+ 
+                     <tr>
+                       <td>Paid Amount</td>
+                       <td [innerHtml]="total()"></td>
+ 
+                     </tr>
+                   </tbody>
+                 </table>
+               </div>
+             </div>
+ 
+ 
+           </div>
+ 
+         </div>
+ 
+       </div>
+ 
+ 
+     </div>
+   </div>
+   <!-- END SECTION ABOUT -->
+ </div>
+ <!-- END MAIN CONTENT -->
 <!-- END FOOTER -->
 <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a> 
 <!-- Modal -->
